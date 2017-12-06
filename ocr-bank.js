@@ -1,17 +1,14 @@
 exports.parse = function (account) {
 	var digits = '';
 	var numDigits = account.length / 12;
-	var numLines = 4;
 	
 	for (var i=0; i<numDigits; i++) {
 		var digit = '';
-		var stringPosition = 0;
 		
-		for (var j=0; j<numLines; j++) {
-			stringPosition = 3 * numDigits * j + 3 * i;
-			digit += account.substr(stringPosition, 3);				
-		}
-		
+		digit += account.substr(3 * i, 3);
+		digit += account.substr(3 * numDigits + 3 * i, 3);
+		digit += account.substr(3 * numDigits * 2 + 3 * i, 3);
+		digit += account.substr(3 * numDigits * 3 + 3 * i, 3);		
 		digits += stringToNumber(digit);	
 	}
 	
