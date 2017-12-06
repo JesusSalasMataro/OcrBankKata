@@ -127,4 +127,14 @@ describe("parse", function () {
     	expect(scanner.parse(row1 + row2 + row3 + row4)).toBe('418');
   });
   
+  it("should parse number four one eight", function () {
+  		
+  	  var row1 = '    _  _     _  _  _  _  _ ';
+	  var row2 = '  | _| _||_||_ |_   ||_||_|';
+	  var row3 = '  ||_  _|  | _||_|  ||_| _|';
+	  var row4 = '                           ';
+    	
+    	expect(scanner.parse(row1 + row2 + row3 + row4)).toBe('123456789');
+  });
+  
 });
