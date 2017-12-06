@@ -15,6 +15,10 @@ exports.parse = function (account) {
 	return digits;	
 };
 
+exports.isValid = function(account) {
+	return true;
+};
+
 function stringToNumber (account) {
 	if (account == ' _ | ||_|   ') {
 		return '0';
