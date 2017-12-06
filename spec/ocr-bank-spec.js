@@ -91,4 +91,22 @@ describe("parse", function () {
     	expect(scanner.parse(' _ |_| _|   ')).toBe('9');
   });
   
+  it("should parse number twelve", function () {
+  		// '    _ '
+  		// '  | _|'
+  		// '  ||_ '
+  		// '      '
+    	
+    	expect(scanner.parse('    _   | _|  ||_       ')).toBe('12');
+  });
+  
+  it("should parse number zero one", function () {
+  		// ' _    '
+  		// '| |  |'
+  		// '|_|  |'
+  		// '      '
+    	
+    	expect(scanner.parse(' _    | |  ||_|  |      ')).toBe('01');
+  });
+  
 });
