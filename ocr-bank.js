@@ -16,6 +16,34 @@ exports.parse = function (account) {
 };
 
 exports.isValid = function(account) {
+	return isValidAccountNumber(account);
+};
+
+exports.numbersHistory = function(accounts) {
+	var numbers = accounts.split('\n');
+	var output = '';
+	
+	for (var i=0; i<numbers.length; i++) {
+		if (isIllAccountNumber(numbers[i])) {
+			output += numbers[i] + ' ILL';
+		}
+		else if (isValidAccountNumber(numbers[i])) {
+			output += numbers[i];		
+		}
+		else {
+			output += numbers[i] + ' ERR';
+		}
+		
+		if (i !== numbers.length - 1) {
+			output += '\n';
+		}
+	}
+		
+	return output;
+};
+
+
+function isValidAccountNumber(account) {
 	var sum = 0;	
 	
 	for (var i=0; i<account.length; i++) {
@@ -23,7 +51,11 @@ exports.isValid = function(account) {
 	}	
 	
 	return sum % 11 === 0;
-};
+}
+
+function isIllAccountNumber(account) {
+	return account.indexOf('?') >= 0;
+}
 
 function stringToNumber (account) {
 	if (account == ' _ | ||_|   ') {
