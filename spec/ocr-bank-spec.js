@@ -127,7 +127,7 @@ describe("parse", function () {
     	expect(scanner.parse(row1 + row2 + row3 + row4)).toBe('418');
   });
   
-  it("should parse number four one eight", function () {
+  it("should parse number one two three four five six seven eight nine", function () {
   		
   	  var row1 = '    _  _     _  _  _  _  _ ';
 	  var row2 = '  | _| _||_||_ |_   ||_||_|';
@@ -135,6 +135,16 @@ describe("parse", function () {
 	  var row4 = '                           ';
     	
     	expect(scanner.parse(row1 + row2 + row3 + row4)).toBe('123456789');
+  });
+  
+  it("should parse invalid number to ?", function () {
+  		
+  		var row1 = ' _ '
+  		var row2 = '|_|'
+  		var row3 = '|_'
+  		var row4 = '   '
+    	
+    	expect(scanner.parse(row1 + row2 + row3 + row4)).toBe('?');
   });
   
 });

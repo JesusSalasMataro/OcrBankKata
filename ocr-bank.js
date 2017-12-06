@@ -43,8 +43,11 @@ function stringToNumber (account) {
 	else if (account == ' _ |_||_|   ') {
 		return '8';	
 	}
+	else if (account == ' _ |_| _|   ') {
+		return '9';	
+	}
 	
-	return '9';	
+	return '?';	
 }
 
 
