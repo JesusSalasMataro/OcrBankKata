@@ -3,18 +3,23 @@ exports.parse = function (account) {
 		return stringToNumber(account);		
 	}
 	else {
-		if (account.length === 24) {
-			var firstDigit;
-			var secondDigit;
+		var digits = '';
+		var numDigits = account.length / 12;
+		var numLines = 4;
+		
+		for (var i=0; i<numDigits; i++) {
+			var digit = '';
+			var stringPosition = 0;
 			
-			firstDigit = account.substr(0, 3) + account.substr(6, 3) + account.substr(12, 3) + account.substr(18, 3);
-			secondDigit = account.substr(3, 3) + account.substr(9, 3) + account.substr(15, 3) + account.substr(21, 3);
+			for (var j=0; j<numLines; j++) {
+				stringPosition = 3 * numDigits * j + 3 * i;
+				digit += account.substr(stringPosition, 3);				
+			}
 			
-			return stringToNumber(firstDigit) + stringToNumber(secondDigit);			
+			digits += stringToNumber(digit);	
 		}
-		else {
-			return '279';		
-		}
+		
+		return digits;	
 	}
 };
 
