@@ -1,26 +1,21 @@
 exports.parse = function (account) {
-	if (account.length === 12) {
-		return stringToNumber(account);		
-	}
-	else {
-		var digits = '';
-		var numDigits = account.length / 12;
-		var numLines = 4;
+	var digits = '';
+	var numDigits = account.length / 12;
+	var numLines = 4;
+	
+	for (var i=0; i<numDigits; i++) {
+		var digit = '';
+		var stringPosition = 0;
 		
-		for (var i=0; i<numDigits; i++) {
-			var digit = '';
-			var stringPosition = 0;
-			
-			for (var j=0; j<numLines; j++) {
-				stringPosition = 3 * numDigits * j + 3 * i;
-				digit += account.substr(stringPosition, 3);				
-			}
-			
-			digits += stringToNumber(digit);	
+		for (var j=0; j<numLines; j++) {
+			stringPosition = 3 * numDigits * j + 3 * i;
+			digit += account.substr(stringPosition, 3);				
 		}
 		
-		return digits;	
+		digits += stringToNumber(digit);	
 	}
+	
+	return digits;	
 };
 
 function stringToNumber (account) {
