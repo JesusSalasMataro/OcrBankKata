@@ -16,7 +16,13 @@ exports.parse = function (account) {
 };
 
 exports.isValid = function(account) {
-	return true;
+	var sum = 0;	
+	
+	for (var i=0; i<account.length; i++) {
+		sum += parseInt(account.charAt(i));	
+	}	
+	
+	return sum % 11 === 0;
 };
 
 function stringToNumber (account) {
